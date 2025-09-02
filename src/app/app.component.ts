@@ -45,9 +45,10 @@ export class AppComponent {
       [atLeastOneSelected]
     ),
 
-    country: new FormControl<
-      'india' | 'usa' | 'uk' | 'canada' | 'russia' | null
-    >('india', [Validators.required]),
+    country: new FormControl<'india' | 'usa' | 'uk' | 'canada' | 'russia' | ''>(
+      '',
+      [Validators.required]
+    ),
   });
 
   get isFirstNameInvalid() {
@@ -160,6 +161,6 @@ export class AppComponent {
     };
     console.log('Form Data:', updatedData);
 
-    this.form.reset();
+    this.form.reset({ country: '' });
   }
 }
