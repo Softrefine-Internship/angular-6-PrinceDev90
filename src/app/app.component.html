@@ -1,0 +1,142 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2 class="text_center">Angular Reactive Form</h2>
+  <div class="form__container">
+    <div [class.input-invalid]="isFirstNameInvalid">
+      <label for="firstName" class="form_label">Firstname</label>
+      <input
+        type="text"
+        class="input_style"
+        placeholder="Enter First Name"
+        name="firstName"
+        id="firstName"
+        formControlName="firstName"
+      />
+      <ng-container *ngIf="isLastNameInvalid">
+        <p class="control-error">{{ getFirstErrorMessage() }}</p>
+      </ng-container>
+    </div>
+
+    <div [class.input-invalid]="isLastNameInvalid">
+      <label for="lastName" class="form_label">Lastname</label>
+      <input
+        type="text"
+        class="input_style"
+        placeholder="Enter Last Name"
+        name="lastName"
+        id="lastName"
+        formControlName="lastName"
+      />
+      <ng-container *ngIf="isLastNameInvalid">
+        <p class="control-error">{{ getLastErrorMessage() }}</p>
+      </ng-container>
+    </div>
+    <div class="email" [class.input-invalid]="isEmailInvalid">
+      <label for="email" class="form_label">Email</label>
+      <input
+        type="text"
+        class="input_style"
+        placeholder="Enter Last Name"
+        name="email"
+        id="email"
+        formControlName="email"
+      />
+
+      <ng-container *ngIf="isEmailInvalid">
+        <p class="control-error">{{ getEmailErrorMessage() }}</p>
+      </ng-container>
+    </div>
+    <div>
+      <fieldset>
+        <legend>Gender</legend>
+        <div>
+          <input
+            type="radio"
+            formControlName="gender"
+            id="male"
+            name="gender"
+            value="male"
+          />
+          <label for="male">Male</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="female"
+            formControlName="gender"
+            name="gender"
+            value="female"
+          />
+          <label for="female">Female</label>
+        </div>
+      </fieldset>
+      <ng-container *ngIf="isGenderInvalid">
+        <p class="control-error">{{ getGenderErrorMessage() }}</p>
+      </ng-container>
+    </div>
+
+    <div>
+      <fieldset formArrayName="hobby">
+        <legend>Hobby</legend>
+        <div class="">
+          <input
+            type="checkbox"
+            formControlName="0"
+            id="chess"
+            name="chess"
+            value="chess"
+          />
+          <label for="chess">Chess</label>
+        </div>
+
+        <div class="">
+          <input
+            type="checkbox"
+            id="cricket"
+            name="cricket"
+            value="cricket"
+            formControlName="1"
+          />
+          <label for="cricket">Cricket</label>
+        </div>
+        <div class="">
+          <input
+            type="checkbox"
+            id="travel"
+            name="travel"
+            value="travel"
+            formControlName="2"
+          />
+          <label for="travel">Travel</label>
+        </div>
+      </fieldset>
+      <ng-container *ngIf="isHobbyInvalid">
+        <p class="control-error">{{ gethobbyErrorMessage() }}</p>
+      </ng-container>
+    </div>
+
+    <div>
+      <label for="country" class="form_label">Country</label>
+      <select
+        name="country"
+        id="country"
+        class="input_style"
+        formControlName="country"
+      >
+        <option value="india">india</option>
+        <option value="usa">usa</option>
+        <option value="uk">uk</option>
+        <option value="canada">canada</option>
+        <option value="russia">russia</option>
+      </select>
+
+      <ng-container *ngIf="isCountryInvalid">
+        <p class="control-error">{{ getCountryErrorMessage() }}</p>
+      </ng-container>
+    </div>
+
+    <div class="btns buttons">
+      <button type="reset">Reset</button>
+      <button type="submit">Submit</button>
+    </div>
+  </div>
+</form>
