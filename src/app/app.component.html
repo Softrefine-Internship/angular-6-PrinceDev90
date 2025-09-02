@@ -11,7 +11,7 @@
         id="firstName"
         formControlName="firstName"
       />
-      <ng-container *ngIf="isLastNameInvalid">
+      <ng-container *ngIf="isFirstNameInvalid">
         <p class="control-error">{{ getFirstErrorMessage() }}</p>
       </ng-container>
     </div>
